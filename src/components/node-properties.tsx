@@ -1,7 +1,9 @@
+"use client";
+
 import { FC, useEffect, useRef, useState } from "react";
 import { Node, useReactFlow } from "reactflow";
 
-interface NodePropertiesProps {
+export interface NodePropertiesProps {
   activeNode: Node | null;
   setActiveNode: React.Dispatch<React.SetStateAction<Node | null>>;
 }
