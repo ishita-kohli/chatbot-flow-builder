@@ -7,19 +7,16 @@ interface ToolbarProps {}
 
 const Toolbar: FC<ToolbarProps> = ({}) => {
   return (
-    <div className="flex flex-col gap-4 px-2">
-      <h3 className="text-2xl uppercase">Toolbar</h3>
-      <div className="grid grid-cols-2 gap-2">
-        {Object.keys(nodeTypes).map((nodeType) => {
-          return (
-            <NodeCard
-              key={nodeType}
-              nodeType={nodeType}
-              {...nodeMetadata[nodeType as keyof typeof nodeMetadata]}
-            />
-          );
-        })}
-      </div>
+    <div className="grid grid-cols-2 gap-2">
+      {Object.keys(nodeTypes).map((nodeType) => {
+        return (
+          <NodeCard
+            key={nodeType}
+            nodeType={nodeType}
+            {...nodeMetadata[nodeType as keyof typeof nodeMetadata]}
+          />
+        );
+      })}
     </div>
   );
 };

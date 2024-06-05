@@ -22,6 +22,7 @@ import {
 } from "@/utils/reactflow";
 import "reactflow/dist/style.css";
 import { toast } from "sonner";
+import Header from "./header";
 import { nodeTypes } from "./nodes";
 import Sidebar from "./sidebar";
 
@@ -30,7 +31,14 @@ interface DashboardProps {}
 const Dashboard: FC<DashboardProps> = ({}) => {
   const reactFlow = useReactFlow();
 
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState([
+    {
+      id: getNewNodeId(),
+      type: "message",
+      position: reactFlow.project({ x: 100, y: 100 }),
+      data: { message: "New Message" },
+    },
+  ]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [activeNode, setActiveNode] = useState<Node | null>(null);
 
@@ -89,19 +97,17 @@ const Dashboard: FC<DashboardProps> = ({}) => {
     toast.success("Flow saved");
   };
 
+  const resetFlow = () => {
+    setNodes([]);
+    setEdges([]);
+  };
+
   return (
     <section>
-      <nav className="bg-gray-200 relative flex justify-end px-10">
-        <button
-          onClick={saveFlow}
-          className=" bg-white font-[500] px-3 py-1 my-2 text-blue-600 border rounded-md hover:bg-gray-100"
-        >
-          Save Changes
-        </button>
-      </nav>
+      <Header onSave={saveFlow} onClear={resetFlow} />
 
-      <main className="flow-container flex w-full">
-        <div className="flow-1 h-[95vh] w-[75%]">
+      <main className="flow-container grid grid-cols-[3fr_1fr]">
+        <div className="flow-1 w-[75vw] h-[92vh]">
           <ReactFlow
             nodes={nodes}
             edges={edges}
