@@ -1,3 +1,9 @@
+import Dashboard from "@/components/dashboard";
+
 export default function Home() {
-  return <main className="min-h-screen">Hello, world!</main>;
+  return (
+    <main className="min-h-screen">
+      <Dashboard />
+    </main>
+  );
 }
