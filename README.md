@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Chatbot Flow Builder
 
-## Getting Started
+This project is a simple, extensible Chatbot flow builder built with NextJS and React Flow. It allows you to visually design chatbot conversations by connecting message nodes in the desired order.
 
-First, run the development server:
+Check out the [Live Version](https://chatbot-flow-builder-ishita.vercel.app/)
+
+![chatbot flow builder](./screenshots/1.png "Chatbot Flow Builder")
+
+## Getting Started:
+
+1. Clone the Repository:
+
+```bash
+git clone https://github.com/ishita-kohli/chatbot-flow-builder.git
+```
+
+2. Install Dependencies:
+
+```bash
+cd chatbot-flow-builder
+npm install
+```
+
+3. Run the Development Server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will typically start the server on http://localhost:3000/ by default (you might need to adjust the port if your system uses a different default).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Text Node:** This node is currently the only supported message type. You can add multiple Text Nodes to create a complex flow.
 
-## Learn More
+- **Extensible Nodes Panel:** This panel houses all available node types. While it currently only contains Text Node, the design is flexible to accommodate future node additions.
 
-To learn more about Next.js, take a look at the following resources:
+- **Drag-and-Drop Functionality:** Add nodes to the flow by dragging them from the Nodes Panel and dropping them onto the canvas.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Edges:** Edges connect nodes together, defining the flow of conversation.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Source and Target Handles:** Each node has a source handle (can have only one outgoing edge) and target handles (can have multiple incoming edges).
 
-## Deploy on Vercel
+- **Properties Panel:** When a Text Node is selected, the Nodes Panel is replaced with the Settings Panel, allowing you to edit the node's text.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Save Button:** Saves the designed flow. The button prevents saving if there are multiple nodes with empty target handles, ensuring a valid flow structure.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Technologies Used:
+
+- React
+- React Flow
+- NextJS
+- TailwindCSS
+- shadcn/ui
